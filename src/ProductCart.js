@@ -7,7 +7,7 @@ import './ProductCart.scss';
 function ProductCart() {
 
   const [products, updateProducts] = useState([]);
-  const [cartProducts, updateCartProducts] = useState({});
+  const [cartProducts, updateCartProducts] = useState([]);
 
   const onQuantityChange = (event, productIndex) => {
     const { value } = event.target;
@@ -15,21 +15,17 @@ function ProductCart() {
     console.log(updatedProducts);
     updateProducts(updatedProducts);
     const updatedProduct = updatedProducts[productIndex];
-    if (cartProducts[updatedProduct.pid]) {
-      updateCartProducts({ ...cartProducts, [updatedProduct.pid]: { ...updatedProduct } })
-    }
+    updateCartProducts(cartProducts.map(product => product.pid === updatedProduct.pid ? { ...updatedProduct } : product))
   }
 
   const onAddToCart = (event, productId, product) => {
     event.stopPropagation();
-    updateCartProducts({ ...cartProducts, [productId]: { ...product } });
+    updateCartProducts([...cartProducts, { ...product }]);
   }
 
   const onRemoveProduct = (event, productId) => {
     event.stopPropagation();
-    const updatedCartProducts = { ...cartProducts };
-    delete updatedCartProducts[productId];
-    updateCartProducts(updatedCartProducts);
+    updateCartProducts(cartProducts.filter(product => product.pid !== productId));
   }
 
   const fetchItems = async () => {
@@ -42,6 +38,7 @@ function ProductCart() {
   useEffect(() => {
     fetchItems();
   }, []);
+
 
   return (
     <div className='cart'>
