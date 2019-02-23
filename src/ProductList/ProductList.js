@@ -9,6 +9,8 @@ const Products = (props) => {
 };
 
 const renderProducts = (props) => {
+
+  console.log(props.products);
   return props.products.map((product, index) => {
     return (
       <section key={product.pid} className='product'>
