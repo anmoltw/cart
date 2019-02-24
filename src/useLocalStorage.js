@@ -8,7 +8,7 @@ function useLocalStorage(props) {
     if (storedValue) {
       console.log("%c data from localstorage", "background: #222; color: #bada55");
       updateStoredValue(JSON.parse(storedValue));
-      props.onChange(JSON.parse(storedValue));
+      // props.onChange(JSON.parse(storedValue));
     } else {
       const url = props.url;
       const response = await fetch(url);
@@ -16,7 +16,7 @@ function useLocalStorage(props) {
       updateStoredValue(newVal);
       window.localStorage.setItem(props.storeAs, JSON.stringify(newVal));
       console.log("%c data from api", "background: #222; color: #bada55");
-      props.onChange(newVal);
+      // props.onChange(newVal);
     }
   }
 

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ProductList from './ProductList/ProductList';
 import Cart from './Cart/Cart';
-import useLocalStorage from './useLocalStorage';
 
 import './ProductCart.scss';
 
-function ProductCart() {
+function ProductCart(props) {
 
   const [products, updateProducts] = useState([]);
   const [cartProducts, updateCartProducts] = useState([]);
@@ -28,8 +27,10 @@ function ProductCart() {
     updateCartProducts(cartProducts.filter(product => product.pid !== productId));
   }
 
-  useLocalStorage({ storeAs: 'cartProducts', url: 'http://localhost:5000/products', initValue: [], onChange: updateProducts });
-
+  useEffect(() => {
+    console.log(`calling effect with ${props.products.length} products`);
+    updateProducts(props.products);
+  })
 
   return (
     <div className='cart'>

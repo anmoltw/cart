@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import ProductCart from './ProductCart';
+import ShoppingCart from './ShoppingCart';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<ProductCart />, document.getElementById('root'));
+ReactDOM.render(<ShoppingCart />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
