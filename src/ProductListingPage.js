@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import ProductList from './ProductList/ProductList';
 import Cart from './Cart/Cart';
 
-import './ProductCart.scss';
+import './ProductListingPage.scss';
 
-function ProductCart(props) {
+function ProductListingPage(props) {
 
   const [products, updateProducts] = useState([]);
   const [cartProducts, updateCartProducts] = useState([]);
@@ -40,4 +40,4 @@ function ProductCart(props) {
   );
 }
 
-export default ProductCart;
+export default ProductListingPage;
