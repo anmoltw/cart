@@ -28,6 +28,7 @@ function useLocalStorage(props) {
         if (event.data) {
           console.log("%c removing localstorage", "background: #222; color: red");
           window.localStorage.removeItem(props.storeAs);
+          fetchItems();
         }
       };
       source.onopen = () => console.log('open');
