@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Cart.scss';
 
 const Cart = (props) => {
@@ -11,8 +12,8 @@ const Cart = (props) => {
 };
 
 const renderCart = (props) => {
-  return Object.keys(props.products).map((key) => {
-    const purchase = props.products[key];
+  return Object.keys(props.cartProducts).map((key) => {
+    const purchase = props.cartProducts[key];
     return (
       <section className='purchase'>
         <div key={key} className='purchase-item'>
@@ -27,8 +28,8 @@ const renderCart = (props) => {
 
 const renderTotalPrice = (props) => {
   let price = 0;
-  Object.keys(props.products).forEach((key) => {
-    price += props.products[key]['discPrice'] * props.products[key]['quantity'];
+  Object.keys(props.cartProducts).forEach((key) => {
+    price += props.cartProducts[key]['discPrice'] * props.cartProducts[key]['quantity'];
 
   });
   return (
@@ -39,5 +40,9 @@ const renderTotalPrice = (props) => {
   )
 };
 
+
+Cart.defaultProps = {
+  cartProducts: []
+};
 
 export default Cart;
