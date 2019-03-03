@@ -1,59 +1,65 @@
 .product {
-    display: flex;
-    border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  border-bottom: 1px solid #e5e5e5;
+  border-radius: 4px;
+  background: #e6ecf0;
+  padding: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+  &__image {
+    flex: 1;
+    & img {
+      border: 1px solid darkgray;
+      border-radius: 4px;
+    }
+  }
+  &__details {
+    flex: 8;
     padding: 10px;
-    margin-bottom: 10px;
-    align-items: center;
-    &__image {
-        flex: 1
+    &__description {
+      color: #7e7e7e;
+      text-transform: capitalize;
+      .separator {
+        padding: 0 10px;
+      }
     }
-    &__details {
-        flex: 8;
-        padding: 10px;
-        &__description {
-            color: #7e7e7e;
-            text-transform: capitalize;
-            .separator {
-                padding: 0 10px;
-            }
-        }
-        >div {
-            margin: 5px 0
-        }
+    > div {
+      margin: 5px 0;
     }
-    &__quantity {
-        margin: 0 40px;
-        flex: 4;
-        select {
-            width: 100%;
-            height: 34px;
-            font-size: 14px;
-            color: #555;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+  }
+  &__quantity {
+    margin: 0 40px;
+    flex: 4;
+    select {
+      width: 100%;
+      height: 34px;
+      font-size: 14px;
+      color: #555;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
-    &__price {
-        font-size: 18px;
-        &--regular {
-            text-decoration: line-through;
-            color: #999;
-        }
-        &--discounted {
-            margin-left: 10px;
-        }
+  }
+  &__price {
+    font-size: 18px;
+    &--regular {
+      text-decoration: line-through;
+      color: #999;
     }
-    &__actions {
-        cursor: pointer;
-        padding: 16px 10px;
-        width: 100%;
-        background-color: #f7931d !important;
-        border-color: #f7931d !important;
-        border-radius: 0;
-        font-size: 14px;
-        font-weight: bold;
-        color: #fff;
-        margin-top: 10px;
+    &--discounted {
+      margin-left: 10px;
     }
+  }
+  &__actions {
+    cursor: pointer;
+    padding: 16px 10px;
+    width: 100%;
+    background-color: #f7931d !important;
+    border-color: #f7931d !important;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 10px;
+  }
 }

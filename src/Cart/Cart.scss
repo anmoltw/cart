@@ -1,52 +1,54 @@
 .purchase {
-    border: 1px solid #000;
-    overflow: hidden;
-    margin: 25px;
-    &-item {
-        display: flex;
-        padding: 15px;
-        &__image {
-            flex: 1;
-            img {
-                height: 80px;
-                width: 70px;
-            }
-        }
-        &__quantity {
-            flex: 1
-        }
-        &__price {
-            flex: 1
-        }
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  soverflow: hidden;
+  margin: 25px;
+  &-item {
+    display: flex;
+    padding: 15px;
+    background-color: #eaeaea;
+    &__image {
+      flex: 1;
+      img {
+        height: 80px;
+        border: 1px solid darkgray;
+        border-radius: 4px;
+      }
     }
+    &__quantity {
+      flex: 1;
+    }
+    &__price {
+      flex: 1;
+    }
+  }
 }
 
 .cart-value {
-    display: flex;
-    font-weight: bold;
-    font-size: 20px;
-    padding: 20px 5px;
-    background-color: #999;
-    margin: 0 25px;
-    &__label {
-        flex: 2;
-        padding-left: 35px;
-        font-style: italic;
-    }
-    &__amount {
-        flex: 1
-    }
+  display: flex;
+  border-radius: 4px;
+  font-size: 20px;
+  padding: 20px 5px;
+  background-color: #b2d4ea;
+  margin: 0 25px;
+  &__label {
+    flex: 2;
+    padding-left: 35px;
+  }
+  &__amount {
+    flex: 1;
+  }
 }
 
 .remove {
-    display: none;
-    cursor: pointer;
-    float: right;
-    color: #fff;
-    background-color: #434343;
-    border-color: #000;
-    border-radius: 0;
-    padding: 10px 25px;
-    font-size: 16px;
-    margin: 10px;
+  display: none;
+  cursor: pointer;
+  float: right;
+  color: #fff;
+  background-color: #434343;
+  border-color: #000;
+  border-radius: 0;
+  padding: 10px 25px;
+  font-size: 16px;
+  margin: 10px;
 }
