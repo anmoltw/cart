@@ -114,9 +114,9 @@ function ProductListingPage(props) {
   }, []);
 
   return (
-    <div className='cart'>
+    <div className="shopping-cart">
       <ProductList products={products} onQuantityChange={onQuantityChange} onAddToCart={onAddToCart} />
-      <Cart cartProducts={filterProductsForCart(products)} />
+      <Cart products={filterProductsForCart(products)} />
     </div>
   );
 }
