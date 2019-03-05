@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import './ProductList.css';
+
 import Product from '../Product/Product';
 
-const Products = props => {
+const ProductList = props => {
   return (
-    <div className="products">
-      {' '}
+    <div className="ProductList">
       {props.products.map(product => (
         <Product
           key={product.id}
@@ -17,8 +19,8 @@ const Products = props => {
   );
 };
 
-Products.propTypes = {
+ProductList.propTypes = {
   onAddToCart: PropTypes.func
 };
 
-export default Products;
+export default ProductList;

@@ -4,7 +4,7 @@ import Cart from './Cart/Cart';
 
 import products from './products';
 
-import './CoolCart.scss';
+import './CoolCart.css';
 
 class CoolCart extends React.Component {
   state = { cartProducts: [] };
@@ -32,7 +32,7 @@ class CoolCart extends React.Component {
 
   render() {
     return (
-      <div className="cart">
+      <div className="CoolCart">
         <ProductList
           onAddToCart={this.onAddToCart}
           products={products}

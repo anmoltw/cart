@@ -1,0 +1,14 @@
+.Product {
+  background: lightsteelblue;
+  margin-bottom: 6px;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.Product button {
+  border: none;
+  margin-top: 8px;
+  padding: 4px 8px;
+  font-weight: bold;
+  border-radius: 4px;
+}

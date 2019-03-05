@@ -1,29 +1,21 @@
 import React from 'react';
-import './Product.scss';
+
+import './Product.css';
 
 const Product = ({ product, onAddToCart }) => {
   const { id, name, image, price } = product;
 
   return (
-    <section className="product">
-      <section className="product__image">
-        <img src={`${image}`} />
-      </section>
+    <section className="Product">
+      <img width="52px" src={`${image}`} />
 
-      <section className="product__details">{name}</section>
+      <section>{name}</section>
 
-      <section>
-        <div className="product__price">
-          <span className="product__price">{`₹${price}`}</span>
-        </div>
+      <div>{`₹${price}`}</div>
 
-        <button
-          className="product__actions"
-          onClick={() => onAddToCart(id)}
-        >
-          ADD TO CART
-        </button>
-      </section>
+      <button onClick={() => onAddToCart(id)}>
+        ADD TO CART
+      </button>
     </section>
   );
 };

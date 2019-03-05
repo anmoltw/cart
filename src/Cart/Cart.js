@@ -1,5 +1,6 @@
 import React from 'react';
-import './Cart.scss';
+
+import './Cart.css';
 
 const Cart = ({ products }) => {
   const totalPrice = products.reduce((acc, product) => {
@@ -7,21 +8,18 @@ const Cart = ({ products }) => {
   }, 0);
 
   return (
-    <div className="cart">
-      <section className="cart-value">
-        <div className="cart-value__label">
-          Total Amount
-        </div>
-        <div className="cart-value__amount">{`₹${totalPrice}`}</div>
-      </section>
+    <div className="Cart">
+      <h3 className="CartTotal">
+        Total Amount: ₹{totalPrice}
+      </h3>
 
       {products.map(product => (
-        <div key={product.id} className="cart-item">
-          <div className="cart-item__image">
-            <img src={`${product.image}`} />
-          </div>
+        <div key={product.id} className="CartProduct">
+          <img width="36" src={`${product.image}`} />
 
-          <div className="cart-item__price">{`₹${
+          <span>{product.name}</span>
+
+          <div className="CartProductPrice">{`₹${
             product.price
           }`}</div>
         </div>
