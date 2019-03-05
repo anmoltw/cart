@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "price": 3000,
+    "name": "Navy Blue Regular Fit Plain Front Trouser",
+    "image": "../images/product-image1.jpg"
+  },
+  {
+    "id": 2,
+    "price": 4000,
+    "name": "Borg Lined Hoody",
+    "image": "../images/product-image2.jpg"
+  }
+]
