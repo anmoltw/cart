@@ -15,10 +15,12 @@ const filterProductsForCart = products => {
 class CoolCart extends React.Component {
   state = { products: [] };
 
-  fetchAndUpdateItems = async () => {
-    const response = await fetch('http://localhost:5000/apparels');
-    const fetchedProducts = await response.json();
-    this.setState({ products: fetchedProducts });
+  fetchAndUpdateItems = () => {
+    fetch('http://localhost:5000/apparels')
+      .then(res => {
+        return res.json();
+      })
+      .then(products => this.setState({ products }));
   };
 
   componentDidMount() {
