@@ -2,7 +2,7 @@
   flex: 1 1 40%;
   margin: 12px;
   padding: 12px;
-  background: lightgray;
+  background: #cfd8dc;
   border-radius: 4px;
 }
 
@@ -13,7 +13,7 @@
 .CartProduct {
   font-size: 12px;
   padding: 4px;
-  border: 1px solid darkgray;
+  background: #ffecb3;
   display: flex;
   align-items: center;
   margin-bottom: 12px;
