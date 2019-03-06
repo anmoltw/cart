@@ -3,7 +3,7 @@ import React from 'react';
 import ProductList from './ProductList/ProductList';
 import Cart from './Cart/Cart';
 
-import products from './products';
+import apparels from './apparels';
 
 import './CoolCart.css';
 
@@ -16,7 +16,7 @@ class CoolCart extends React.Component {
   state = { products: [] };
 
   fetchAndUpdateItems = async () => {
-    const response = await fetch('http://localhost:5000/products');
+    const response = await fetch('http://localhost:5000/apparels');
     const fetchedProducts = await response.json();
     this.setState({ products: fetchedProducts });
   };
