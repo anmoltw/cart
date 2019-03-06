@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import CoolCart from './CoolCart';
+import App from './App';
 
 ReactDOM.render(
-  <CoolCart />,
+  <App />,
   document.getElementById('root')
 );

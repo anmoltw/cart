@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ProductList from './ProductList/ProductList';
+import PropTypes from 'prop-types';
 import Cart from './Cart/Cart';
 
 import apparels from './apparels';
@@ -15,8 +16,8 @@ const filterProductsForCart = products => {
 class CoolCart extends React.Component {
   state = { products: [] };
 
-  fetchAndUpdateItems = () => {
-    fetch('http://localhost:5000/apparels')
+  fetchAndUpdateItems = selectedCategory => {
+    fetch(`http://localhost:5000/${selectedCategory}`)
       .then(res => {
         return res.json();
       })
@@ -24,7 +25,11 @@ class CoolCart extends React.Component {
   };
 
   componentDidMount() {
-    this.fetchAndUpdateItems();
+    this.fetchAndUpdateItems(this.props.selectedCategory);
+  }
+
+  componentDidUpdate() {
+    this.fetchAndUpdateItems(this.props.selectedCategory);
   }
 
   onAddToCart = productId => {
@@ -49,5 +54,10 @@ class CoolCart extends React.Component {
     );
   }
 }
+
+CoolCart.defaultProps = {
+  selectedCategory: 'apparels'
+}
+
 
 export default CoolCart;
