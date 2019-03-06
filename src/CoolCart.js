@@ -1,4 +1,5 @@
 import React from 'react';
+
 import ProductList from './ProductList/ProductList';
 import Cart from './Cart/Cart';
 
@@ -6,28 +7,32 @@ import products from './products';
 
 import './CoolCart.css';
 
+const filterProductsForCart = products => {
+  const filteredProds = products.filter(product => product.isInCart);
+  return filteredProds;
+};
+
 class CoolCart extends React.Component {
-  state = { cartProducts: [] };
+  state = { products: [] };
+
+  fetchAndUpdateItems = async () => {
+    const response = await fetch('http://localhost:5000/products');
+    const fetchedProducts = await response.json();
+    this.setState({ products: fetchedProducts });
+  };
+
+  componentDidMount() {
+    this.fetchAndUpdateItems();
+  }
 
   onAddToCart = productId => {
-    this.setState(prevState => {
-      const existingId = prevState.cartProducts.find(
-        product => product.id === productId
-      );
-
-      if (existingId !== undefined) {
-        return;
-      }
-
-      return {
-        cartProducts: [
-          ...prevState.cartProducts,
-          products.find(product => {
-            return product.id === productId;
-          })
-        ]
-      };
-    });
+    this.setState(prevState => ({
+      products: prevState.products.map(product => {
+        return product.id === productId && !product.isInCart
+          ? { ...product, isInCart: true }
+          : product;
+      })
+    }));
   };
 
   render() {
@@ -35,9 +40,9 @@ class CoolCart extends React.Component {
       <div className="CoolCart">
         <ProductList
           onAddToCart={this.onAddToCart}
-          products={products}
+          products={this.state.products}
         />
-        <Cart products={this.state.cartProducts} />
+        <Cart products={filterProductsForCart(this.state.products)} />
       </div>
     );
   }
