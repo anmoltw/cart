@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import ProductList from './ProductList/ProductList';
 import PropTypes from 'prop-types';
@@ -13,46 +13,32 @@ const filterProductsForCart = products => {
   return filteredProds;
 };
 
-class CoolCart extends React.Component {
-  state = { products: [] };
+const CoolCart = (props) => {
+  const [products, updateProducts] = useState([]);
 
-  fetchAndUpdateItems = selectedCategory => {
-    fetch(`http://localhost:5000/${selectedCategory}`)
-      .then(res => {
-        return res.json();
-      })
-      .then(products => this.setState({ products }));
+
+  useEffect(() => {
+    console.log("%c effect called", "background: #222; color: #2ecc71");
+    updateProducts(props.products);
+  }, [props.products]);
+
+  const onAddToCart = productId => {
+    const updatedProducts = products.map(product => product.id === productId ? { ...product, isInCart: true } : product);
+    console.log(updatedProducts);
+    updateProducts(updatedProducts);
   };
 
-  componentDidMount() {
-    this.fetchAndUpdateItems(this.props.selectedCategory);
-  }
 
-  componentDidUpdate() {
-    this.fetchAndUpdateItems(this.props.selectedCategory);
-  }
+  return (
+    <div className="CoolCart">
+      <ProductList
+        onAddToCart={onAddToCart}
+        products={products}
+      />
+      <Cart products={filterProductsForCart(products)} />
+    </div>
+  );
 
-  onAddToCart = productId => {
-    this.setState(prevState => ({
-      products: prevState.products.map(product => {
-        return product.id === productId && !product.isInCart
-          ? { ...product, isInCart: true }
-          : product;
-      })
-    }));
-  };
-
-  render() {
-    return (
-      <div className="CoolCart">
-        <ProductList
-          onAddToCart={this.onAddToCart}
-          products={this.state.products}
-        />
-        <Cart products={filterProductsForCart(this.state.products)} />
-      </div>
-    );
-  }
 }
 
 CoolCart.defaultProps = {
