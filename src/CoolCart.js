@@ -28,8 +28,10 @@ class CoolCart extends React.Component {
     this.fetchAndUpdateItems(this.props.selectedCategory);
   }
 
-  componentDidUpdate() {
-    this.fetchAndUpdateItems(this.props.selectedCategory);
+  componentDidUpdate(prevProps) {
+    if (prevProps.selectedCategory !== this.props.selectedCategory) {
+      this.fetchAndUpdateItems(this.props.selectedCategory);
+    }
   }
 
   onAddToCart = productId => {
@@ -57,7 +59,6 @@ class CoolCart extends React.Component {
 
 CoolCart.defaultProps = {
   selectedCategory: 'apparels'
-}
-
+};
 
 export default CoolCart;
