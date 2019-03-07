@@ -1,10 +1,7 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 import ProductList from './ProductList/ProductList';
 import PropTypes from 'prop-types';
 import Cart from './Cart/Cart';
-
-import apparels from './apparels';
 
 import './CoolCart.css';
 
@@ -13,48 +10,40 @@ const filterProductsForCart = products => {
   return filteredProds;
 };
 
-class CoolCart extends React.Component {
-  state = { products: [] };
+function CoolCart(props) {
 
-  fetchAndUpdateItems = selectedCategory => {
+  const [products, updateProducts] = useState([]);
+
+  const fetchAndUpdateItems = selectedCategory => {
     fetch(`http://localhost:5000/${selectedCategory}`)
       .then(res => {
         return res.json();
       })
-      .then(products => this.setState({ products }));
+      .then(prods => updateProducts(prods));
   };
 
-  componentDidMount() {
-    this.fetchAndUpdateItems(this.props.selectedCategory);
+  useEffect(() => {
+    fetchAndUpdateItems(props.selectedCategory)
+  }, [props.selectedCategory])
+
+  const onAddToCart = productId => {
+    const updatedProducts = products.map(product => {
+      return product.id === productId && !product.isInCart
+        ? { ...product, isInCart: true }
+        : product;
+    });
+    updateProducts(updatedProducts);
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.selectedCategory !== this.props.selectedCategory) {
-      this.fetchAndUpdateItems(this.props.selectedCategory);
-    }
-  }
-
-  onAddToCart = productId => {
-    this.setState(prevState => ({
-      products: prevState.products.map(product => {
-        return product.id === productId && !product.isInCart
-          ? { ...product, isInCart: true }
-          : product;
-      })
-    }));
-  };
-
-  render() {
-    return (
-      <div className="CoolCart">
-        <ProductList
-          onAddToCart={this.onAddToCart}
-          products={this.state.products}
-        />
-        <Cart products={filterProductsForCart(this.state.products)} />
-      </div>
-    );
-  }
+  return (
+    <div className="CoolCart">
+      <ProductList
+        onAddToCart={onAddToCart}
+        products={products}
+      />
+      <Cart products={filterProductsForCart(products)} />
+    </div>
+  );
 }
 
 CoolCart.defaultProps = {
