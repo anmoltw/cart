@@ -16,6 +16,8 @@ const filterProductsForCart = products => {
 class CoolCart extends React.Component {
   state = { products: [] };
 
+  // NOTE: make sure server is running before making the API call
+  // Refer the cart-sse repo for server info
   fetchAndUpdateItems = selectedCategory => {
     fetch(`http://localhost:5000/${selectedCategory}`)
       .then(res => {
