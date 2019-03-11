@@ -24,7 +24,6 @@ const CoolCart = (props) => {
 
   const onAddToCart = productId => {
     const updatedProducts = products.map(product => product.id === productId ? { ...product, isInCart: true } : product);
-    console.log(updatedProducts);
     updateProducts(updatedProducts);
   };
 
